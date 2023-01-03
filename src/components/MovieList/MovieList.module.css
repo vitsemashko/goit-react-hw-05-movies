@@ -1,0 +1,11 @@
+.movieList {
+	padding-left: 100px;
+	padding-top: 20px;
+}
+.movieListItem {
+	padding-bottom: 10px;
+}
+.movieListItem:hover {
+	color: teal;
+	font-weight: bold;
+}

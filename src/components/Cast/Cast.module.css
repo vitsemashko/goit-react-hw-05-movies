@@ -1,0 +1,22 @@
+.CastList {
+	padding: 10px 0;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+.castItem {
+	padding-top: 30px;
+	padding-left: 80px;
+}
+.castImage {
+	padding-bottom: 10px;
+	width: 200px;
+	border-radius: 5px;
+}
+.castText {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
