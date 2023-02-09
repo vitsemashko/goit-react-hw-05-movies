@@ -1,12 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-import { ToastContainer } from 'react-toastify';
-import '../node_modules/react-toastify/dist/ReactToastify.minimal.css';
 import './App.css';
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 const Home = lazy(() => import('./pages/Home/Home'));
 const Movies = lazy(() => import('./pages/Movies/Movies'));
-const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 const MovieDetails = lazy(() => import('./pages/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./components/Cast/Cast'));
 const Reviews = lazy(() => import('./components/Reviews/Reviews'));
@@ -27,11 +24,9 @@ const App = () => {
               <Route path="reviews" element={<Reviews />} />
             </Route>
           </Route>
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-
-      <ToastContainer />
     </div>
   );
 };

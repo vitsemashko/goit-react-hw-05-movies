@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { useSearchParams } from 'react-router-dom';
 import css from './SearchBox.module.css';
 
 const SearchBox = ({ query = '', onChange }) => {
   const [searchQuery, setSearchQuery] = useState('');
-
+  const [searchParams] = useSearchParams();
   useEffect(() => {
-    if (query) {
+    if (query.length) {
       setSearchQuery(query);
     }
-  }, [query]);
-
+    if (searchParams.toString()) {
+      setSearchQuery(searchParams.get('query'));
+    }
+  }, [query, searchParams]);
   const handleChange = e => {
     setSearchQuery(e.target.value);
   };
@@ -19,9 +22,8 @@ const SearchBox = ({ query = '', onChange }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onChange(searchQuery);
-    setSearchQuery('');
+    // setSearchQuery('');
   };
-
   return (
     <div className={css.Wrapper}>
       <form className={css.Form} onSubmit={handleSubmit}>
@@ -44,7 +46,7 @@ const SearchBox = ({ query = '', onChange }) => {
 };
 
 SearchBox.propTypes = {
-  query: PropTypes.string.isRequired,
+  query: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 export default SearchBox;
